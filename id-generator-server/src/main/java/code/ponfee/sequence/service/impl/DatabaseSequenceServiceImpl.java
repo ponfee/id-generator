@@ -1,7 +1,7 @@
 package code.ponfee.sequence.service.impl;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -27,7 +27,7 @@ import code.ponfee.sequence.service.ISequenceService;
 public class DatabaseSequenceServiceImpl implements ISequenceService {
     private final static Lock LOCK = new ReentrantLock();
     /** 保存序列（一个数据序列对应一个sequence）*/
-    private static final Map<String, Sequence> SEQUENCE_HOLDER = new ConcurrentHashMap<>();
+    private static final Map<String, Sequence> SEQUENCE_HOLDER = new /*Concurrent*/HashMap<>();
     private static final int MAX_SIZE = 1000;
 
     private @Value("${sequence.range.size:100}") int seqRangeSize;
