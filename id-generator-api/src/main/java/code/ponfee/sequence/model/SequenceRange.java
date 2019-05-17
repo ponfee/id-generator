@@ -32,7 +32,9 @@ public class SequenceRange implements Serializable {
 
     public long next() {
         long value = current.getAndIncrement();
-        if (value > end) value = -1;
+        if (value > end) {
+            value = -1;
+        }
         return value;
     }
 
@@ -57,15 +59,18 @@ public class SequenceRange implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) return false;
-        if (this == obj) return true;
-        if (getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof SequenceRange)) {
+            return false;
+        }
 
         SequenceRange other = (SequenceRange) obj;
-        if (start != other.start) return false;
-        if (end != other.end) return false;
-        if (current.get() != other.current.get()) return false;
-        return true;
+        if (start != other.start || end != other.end) {
+            return false;
+        }
+        return current.get() == other.current.get();
     }
 
     @Override

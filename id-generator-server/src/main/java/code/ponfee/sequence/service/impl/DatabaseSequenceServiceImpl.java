@@ -25,7 +25,9 @@ import code.ponfee.sequence.service.ISequenceService;
  */
 @Service("databaseSequenceService")
 public class DatabaseSequenceServiceImpl implements ISequenceService {
+
     private final static Lock LOCK = new ReentrantLock();
+
     /** 保存序列（一个数据序列对应一个sequence）*/
     private static final Map<String, Sequence> SEQUENCE_HOLDER = new /*Concurrent*/HashMap<>();
     private static final int MAX_SIZE = 1000;
