@@ -1,7 +1,7 @@
 # sequence generate server
 
-Others way:
-DDL:
+## Others way:
+### DDL:
 CREATE TABLE `uid_sequence` (  
   `id` bigint(20) unsigned NOT NULL auto_increment,  
   `stub` char(1) NOT NULL default '',  
@@ -9,6 +9,6 @@ CREATE TABLE `uid_sequence` (
   UNIQUE KEY `stub` (`stub`)  
 ) ENGINE=MyISAM;
 
-DML:
+### DML:
 REPLACE INTO uid_sequence (stub) VALUES ('test');  
 SELECT LAST_INSERT_ID();
